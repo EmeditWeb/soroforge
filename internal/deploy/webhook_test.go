@@ -21,6 +21,25 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// ExampleNewHTTPWebhookSender shows how to create a webhook sender with the
+// default HTTP client and retry policy.
+func ExampleNewHTTPWebhookSender() {
+	sender := deploy.NewHTTPWebhookSender(nil)
+	client := sender.(*deploy.HTTPWebhookSender).client
+	fmt.Printf("timeout: %v\n", client.Timeout)
+	// Output: timeout: 10s
+}
+
+// ExampleNewHTTPWebhookSenderWithCustomClient shows how to create a webhook
+// sender with a custom HTTP client.
+func ExampleNewHTTPWebhookSenderWithCustomClient() {
+	client := &http.Client{Timeout: 5 * time.Second}
+	sender := deploy.NewHTTPWebhookSender(client)
+	customClient := sender.(*deploy.HTTPWebhookSender).client
+	fmt.Printf("timeout: %v\n", customClient.Timeout)
+	// Output: timeout: 5s
+}
+
 func TestDeployNotifiesWebhookWithSignature(t *testing.T) {
 	var (
 		mu       sync.Mutex
