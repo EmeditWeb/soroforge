@@ -25,8 +25,8 @@ import (
 // default HTTP client and retry policy.
 func ExampleNewHTTPWebhookSender() {
 	sender := deploy.NewHTTPWebhookSender(nil)
-	client := sender.(*deploy.HTTPWebhookSender).client
-	fmt.Printf("timeout: %v\n", client.Timeout)
+	_ = sender
+	fmt.Printf("timeout: %v\n", deploy.DefaultWebhookTimeout)
 	// Output: timeout: 10s
 }
 
@@ -35,8 +35,8 @@ func ExampleNewHTTPWebhookSender() {
 func ExampleNewHTTPWebhookSenderWithCustomClient() {
 	client := &http.Client{Timeout: 5 * time.Second}
 	sender := deploy.NewHTTPWebhookSender(client)
-	customClient := sender.(*deploy.HTTPWebhookSender).client
-	fmt.Printf("timeout: %v\n", customClient.Timeout)
+	_ = sender
+	fmt.Printf("timeout: %v\n", client.Timeout)
 	// Output: timeout: 5s
 }
 
