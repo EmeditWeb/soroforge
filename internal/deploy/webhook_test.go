@@ -30,9 +30,9 @@ func ExampleNewHTTPWebhookSender() {
 	// Output: timeout: 10s
 }
 
-// ExampleNewHTTPWebhookSenderWithCustomClient shows how to create a webhook
+// ExampleNewHTTPWebhookSender_withCustomClient shows how to create a webhook
 // sender with a custom HTTP client.
-func ExampleNewHTTPWebhookSenderWithCustomClient() {
+func ExampleNewHTTPWebhookSender_withCustomClient() {
 	client := &http.Client{Timeout: 5 * time.Second}
 	sender := deploy.NewHTTPWebhookSender(client)
 	_ = sender

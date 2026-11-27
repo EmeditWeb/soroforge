@@ -45,9 +45,9 @@ func ExampleNew() {
 	// contracts: 1
 }
 
-// ExampleNewWithSigner shows how to create a Service with a signer for
+// ExampleNew_withSigner shows how to create a Service with a signer for
 // deploy and upgrade operations.
-func ExampleNewWithSigner() {
+func ExampleNew_withSigner() {
 	cfg := &config.Config{
 		DefaultNetwork: "testnet",
 		Networks: map[string]config.Network{
